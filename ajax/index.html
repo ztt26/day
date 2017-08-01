@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			AJAX:一种前端与后端的数据交互方式,(前后端分离的技术)
+			XML是一种数据格式：
+			'<person>
+				<name>小强</name>
+				<age>小强</age>
+			</person>'
+			'{name:'小强'，age:'18'}';
+			目前发展下,不只是XML还有JSON
+			***不管什么格式,服务器返回来的数据都是字符串***
+			
+			1.减少服务器压力
+			2.优化用户体验,不刷新页面就能访问
+			3.使用异步方式与服务器通信,不需要打断用户的操作,具有更加迅速的响应能力.(服务器:xmpp)
+			
+			不能在本地运行代码,因为后端的文件必须要在服务器下运行
+			localhost/1.html
+			ajax难点:拿到数据之后,如何操作数据.
+			
+			$.ajax({
+				url:'后端接口地址',
+				data:{
+					拼接的字段:需要拼接的数据(前端传给后端的数据)
+					pname:$('#user').val();(pname是前后端商量好的暗号,后端定义的)
+				},
+				//当服务器处理完之后的结果
+				success:function(data){
+					$('span').text(data)//sucess是回调
+					consoloe.log(data)
+				}
+			})
+			
+			ajax交互模型(实现原理,实现机制)
+			
+			文件夹名字英文
+			要在服务器上运行
+			
+			
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		用户名：<input type="text" name="user" id="user" /><span></span>
+		<script type="text/javascript">
+			/*
+			 电话机制:1.买一部手机
+					2.输入电话号码
+					3.拨号
+					4.等待对方接电话
+					5.通话
+			同步：等待，从上向下执行，有执行顺序
+			异步：不用等待，不执行完一个部分，另一部分也可以执行
+			
+			 * 
+			 * */
+			var uer=document.getElementById('user');
+			user.onblur=function(){
+				//1.创建一个ajax对象
+				var ajax=new XMLHttpRequest();
+				//2.填写请求地址
+				/*
+				 * mothod：使用什么方式请求
+				 * url:请求的地址
+				 * boolean：是否异步，默认是false异步
+				 */
+				ajax.open('get','php/get.php?user='+user.value);
+				//3.发送请求
+				
+				ajax().send();
+				//4.等待服务器响应
+				ajax.onload=function(){
+					//onload目的：异步之后的东西也要执行，同步就不需要onload
+					//ajax.responseText:后端处理完成之后返回的数据
+					//通话
+					span.innerHTML=ajax.responseText;
+				}
+			}
+			/*
+			 * json：'[]'     json的key值要被""引起来、、长得像对象的字符串
+			 * 		'{}'
+			 * 对象：{}
+			 * 数组：[]
+			 * 
+			 * JSON.parse(ajax.responseText)//Object{JSON}对象
+			 * 
+			 */
+			/*
+			 * //请求头
+				ahax.setRequestHeader("","")在send前写
+				post不用在open里写，在send前写haiyaoy0ou请求头
+				
+				post与get区别：发送方式  安全性能  体积  加不加setReustHeader
+				
+				post：1.通过send发送前端数据给后端，
+					  2.安全性更好，不会把信息加载到url上，
+					  相对安全(关于用户的信息会用post)
+					  3.体积理论上来说是无限大。（但是后端会做限制）
+					  4.在send前设置一个setRequestHeader();
+					  5，在IE浏览器下中文会被解析成UPL编码的格式，所以容易出问题，所以建议只要val值会出现
+					  	中文就用encodeURL()转一下。
+					  		要把中文转成url码
+				
+				
+				get：1.通过浏览器的url来发送数据给后端，历史记录找的到，
+				     2.会把信息加载到url上相对不安全
+				   （只要不跟用户信息打交道或者在数据一定范围都可以使用get）
+				     3.体积就受浏览器的限制（不同浏览器有不同的限制）
+				     4.不用设置请求头
+				     5.不用把中文转成url码，因为ajax.setRuestHeader里有encode属性
+			 * 
+			 */
+			
+			
+			/*
+			 * 三个百分号是一个文字
+			 * const str='秒味'
+			 * encodeURL(str)//把中文转成URL码
+			 * decodeURL(str)//把URL码转成中文
+			 * 
+			 * 在ajax.open(。。。。。encodeURL(text().val()))  
+			 * */
+		</script>
+	</body>
+</html>
