@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<button id="btn">点击揍你</button>
+		<ul id="ul">
+			<li></li>
+		</ul>
+		<script type="text/javascript">
+			/*
+			 * ClearBr()去除回车
+			 */
+			const btn=document.getElementById('btn');
+			const ul=document.getElementById('ul');
+			btn.addEventListener('click',click);
+			function click(){
+				const ajax=new XMLHttpRequest();
+				ajax.open('get','php/data.xml');
+				ajax.send();
+				ajax.onload=function(){//onload在ie9以上才会触发
+					//专门用来解析XML数据的
+					const data=ajax.responseXML;
+					let persons=data.getElementsByTagName('person');
+					persons=Array from(persons);
+					let html='';
+					persons.forEach(a=>{
+						html+='';
+						var name=a.getElementsByTagName('name');
+						var age=a.getElementsByTagName('age');
+						var sex=a.getElementsByTagName('sex');
+						var info=a.getElementsByTagName('info');
+					});
+					ul.innerHTML=html;
+				}
+			}
+			
+			
+			/*
+			 * 浏览器缓存：通过浏览器的url访问的地址，只要每次访问就会把这个地址给缓存下来，以便下次访问直接就走缓存。
+			 * 下一次访问同一个地址的时候不会再进行http请求了，大大减少了服务器的压力。
+			 * 有些时候后端改的东西因为有缓存机制，所以再次请求刷新页面的时候依然显示之前的内容。
+			 * 
+			 * 解决：只要不是同一个地址就行   ？saft(?后随便打一点什么)
+			 * 低版本不支持onload
+			 * 
+			 * 
+			 * 
+			 * 
+			 * 请求了但没成功 
+			 * ajax.status就是专门用来查看HTTP状态码值的
+			 * 状态码：1，2，3，4，5字开头的
+			 * 1代表消息
+			 * 2代表成功
+			 * 3代表重定向、
+			 * 4代表就是错误（请求出错）
+			 * 5.6代表服务器出错
+			 * 成功的范围
+			 * status>=200&status<=207||status=304
+			 * 
+			 * ie9以下不支持onload
+			 * onreadystatechange所朋友浏览器都支持
+			 * 当服务器进行相应的时候，每完成一个步骤就会触发这个事件。
+			 * 从发送到服务器处理完成一共有5个步骤，每个步骤都是用数字来表示，0-4
+			 * 只不过0是监控不到的，不管它进行到几，只要到了数字4说明服务器接收并响应了就绪
+			 * 1.监听事件：onreadystatechange
+			 * 2.执行的步骤：readyState
+			 * 3.状态码：ajax.status     【200-207，304】成功
+			 * 	onreadystatechange放在send的前面与后面的区别？
+			 * 能多监听一步而已，因为只有数字4才算请求响应完毕。
+			 * 
+			 * 同步：代码执行是一句一句的来，如果一句代码没有执行完就不会执行下段代码下一句代码始终要等待上一句代码执行完成才会执行
+			 * 异步：代码是一句一句的来，入果上一句没有执行完可以执行另一段代码的，不用等待就能执行。
+			 * 	promise解决异步问题
+			 */
+		</script>
+	</body>
+</html>
