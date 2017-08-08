@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			1、 本地存储：HTML5中出现的window下的属性。
+			 sessionStorage和localStorage
+			 最好也需要在服务器环境下运行。
+			本地专门用来前端存储数据的，可是说是前端的数据库，一样是存在浏览器中的。
+			localStorage存储的内容可以比cookie更多，比cookie操作(增、删、改)起来更便捷
+			localStorage.setItem('key','value');//设置
+			localStorage.getItem('key');//获取
+			localStorage.removeItem('key');//删除
+			生命周期：只要不删就一直在
+			每个域名5M左右据说未来还会扩展
+			
+			
+			localStorage用来读取字符串的。
+			localStorage.setItem('like','hehe');//设置
+			localStorage.getItem('like');//获取
+			localStorage.removeItem('like');//删除
+			localStorage.clear();
+			
+			
+			2、事件：storage事件
+				能够监听同域同浏览器的兄弟页面数据并且实时更新
+				只有手动删除浏览器的数据才会在当前页面上触发这个事件
+			
+			
+			
+			json.parse(null)=null
+			localStorage.getItem('mmx')//没有=>null
+			
+			
+			3.sessionSterage set get remove clear方法都有同localStorage  sessionSterage.clear();
+			sessionStorage与localStorage的不同点：当前页面存储，不共享兄弟页面。
+			生命周期：关闭浏览器生命就结束。
+			
+			
+			MVC:
+				Model:数据
+				View ：模板
+				Controller：控制器
+				M和V由C来控制
+			
+			 */	
+		</script>
+	</body>
+</html>
