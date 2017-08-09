@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 原生->jQuery->模板引擎(专门把渲染页面的逻辑抽离出来)
+			angular(MVVM框架)(26734)->React(73074)->vue(62819)
+			React:是MVC中的专注于View层的前端框架(vue 比react好在双向数据绑定)
+			虚拟DOM：其实就是一个描述元素的对象
+			
+			专注于数据逻辑，渲染交给框架来完成。
+			React:
+			1.创建虚拟DOM(声明React对象的时候名字***一定要大写***)
+			2.把虚拟的DOM放到页面   ReactDOM.render 第一个参数是创建的React第二个参数是js的id
+			
+			jsx 语法：虽然可以将一个h1标签渲染到页面，但是写起来比较麻烦，如果有种写法跟html一样就好了，
+					所以出现了jsx语法。
+					
+					注意：1.在此语法中class要写成className
+						2.顶层只能有一个标签
+						3.表单元素需要闭合   < />
+						4.render是个函数，里面的内容是参数
+						5.build/react.js  build/react-dom.js  build/browser.min.js type="text/babel"
+				getInitialState:初始化状态，当这个状态中的值发生变化的时候就会
+				
+			1.给元素加事件 onClick={this.click}
+			2.定义事件函数：跟render函数是平级关系，创建一个时间函数
+			3.更改状态：this.setState({})  只有事件有改变状态
+			4.输出 this.state.num 要用{}包起来
+			
+			组件化开发：实现高内聚低耦合 ，玩的是团队，协作。 
+						创建一个组件
+						状态 通信 事件
+						初始化状态在initialState
+						使用getinitialState中的数据，用this.state
+						更改状态：this.setState
+			 */
+		</script>
+	</body>
+</html>
