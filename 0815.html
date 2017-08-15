@@ -1,0 +1,21 @@
+component里面既可以写组件也可以接受一个函数，在这个函数中需要return一个组件，这个函数的参数中有个match，
+他可以显示当前的路由是什么
+match={
+path:"id/",
+url:"/app",
+isExact:true,
+params:{id:app}
+}
+match.params.id 就是路由的地址，（/后面的地址）
+这个id是通过path="/:id"
+/:id/
+此id就是match.params.id就是component里的函数的参数的match.params.id
+
+1.静态的直接App
+2.动态的 Link to      path="/.id"       compenent里面改成child函数
+  let child=(obj)=>   obj里的参数：history, match:{url:/app,path:'/:id',params   ...
+
+ component里面可以放两个东西一个是组件一个是函数
+
+exact：加在Route中，加了exact之后认为整个url为一个整体去匹配，如果不加在ppa下 /ppa/***是有的，如果加上就没有
+strict：加上strict，没写最后的斜线是找不到组件的，写了及/one/two都可以找到。
