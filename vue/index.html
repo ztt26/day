@@ -1,0 +1,40 @@
+class：事件后可以放函数也可以放字符串
+      如果是可变的class就在class前加v-bind简写就是：
+      只要属性需要发生变化那么就使用v-bind去监听
+      1.class："{className:boolean}"
+        click里如果不能直接写data的值那么就写成函数
+      2.class："object"
+      react中的class：let cName=xxx;className={cName
+style 用法
+     <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>}
+     :style="{background:red}"  style里可以写对象，也可以写数组
+v-if：不用v-if用v-show相对来说不会操作dom性能上面更高一些的，v-if频繁的操作dom如果有两种及以上情况就用v-if
+computed:当某个数据方法发生变化是触发
+          computed：{
+                      toDou：function(){
+                        return this.num<10?'0'+this.num:''+this.num;
+                      }
+                    }
+          一开始挂载的时候会先进toDo一次，以后每次数据发生变化的时候都会进computed里面，
+          computed与method区别：computed是数据发生变化才会执行，method不管数据发不发生变化只要调用就会执行
+          method可以做computed的事情，相反则不能，
+          toDou是指自定义一个名字
+          computed里面写了return就会输出到页面上，必须输出才行，不想输出就用watch
+watch用法：  watch: {
+              val: {
+                  handler: function (val, oldVal){
+                    xxx
+                  }
+                  deep: true
+                }
+              }
+              val：指的是监听的是val
+              一开始不会执行，只有数据真正发生变化才会执行。如果不加deep只能监听一层。
+
+回顾react：状态
+          传递 props
+          语法
+
+v-model双向数据绑定
+第二个参数ev是在定义这个blur事件的时候传了一个$event
+nextTick当DOM加载结束就执行的回调
