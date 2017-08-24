@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 100px;
+				height: 100px;
+				background: skyblue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<div>
+			<h1>登录</h1>
+			<div id="show">
+			   用户名：<input type="text" name="" value="" id="user">
+			    密码：<input type="password" name="" value="" id="pass">
+			<button id="btn">提交</button>
+			<button id="btn2">现在就注册</button>
+		</div>
+			<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+			<script>
+					if(!localStorage.getItem('user')){
+						$('h1').html('请登录');
+
+					}else{
+						let users=localStorage.getItem('user');
+						$('#show').hide();
+						$('h1').html(`<span style="color:red"> ${users}</span>欢迎你！`);
+						$('#btn2').html('退出登录');
+					}
+					$('#btn').click(function(){
+						if($('#user').val()==''||$('#pass').val()==''){
+							alert('请输入正确的内容');
+							return;
+						}
+					})
+					//登录
+					$.ajax({
+						url:'/user',
+						methods:'post',
+						data:{
+							act:'login',
+							username:$('#user').val(),
+							password:$('#pass').val()
+						},
+						success:function(data){
+							console.log(111)
+							data=JSON.parse(data);
+							if(data.code==0){
+								localStorage.setItem('user',data.users);
+								window.location.reload();
+							}else if(data.code==1){
+								alert(data.msg);
+							}else if(data.code==2){
+								alert(data.msg);
+							}
+						}
+
+				});
+				//注册
+				$('#btn2').click(function(){
+					if($('#btn2').html()=='退出登录'){
+						localStorage.clear();
+						window.location.reload();
+					}else{
+						if($('#user').val()==''||$('#pass').val()==''){
+							alert('请输入正确的内容');
+							return;
+						}
+						$.ajax({
+							url:'/user',
+							methods:'post',
+							data:{
+								act:'login',
+								username:$('#user').val(),
+								password:$('#pass').val()
+							},
+							success:function(data){
+								data=JSON.parse(data);
+								if(data.code==0){
+									localStorage.setItem('user',data.users);
+									window.location.reload();
+								}else if(data.code==1){
+									alert(data.msg);
+								}else if(data.code==2){
+									alert(data.msg);
+								}
+							}
+
+					});
+					}
+				})
+			</script>
+	</div>
+	</body>
+</html>
